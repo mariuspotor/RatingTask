@@ -15,7 +15,7 @@ import {
 
 import StarRatingModal from '../components/StarRatingModal';
 import TestRatingModal from '../components/TestRatingModal';
-// import {getRemoteValue, logEvent} from '../services/firebase';
+import {getRemoteValue, logEvent} from '../services/firebase';
 
 type Context = {
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +36,7 @@ const StarRatingContext: React.FC<PropsWithChildren<Props>> = ({
   navigation,
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const experiment = 'current'; // getRemoteValue('rating');
+  const experiment = getRemoteValue('rating');
 
   const onStarRatingClose = () => {
     starRatingClose();
@@ -44,7 +44,7 @@ const StarRatingContext: React.FC<PropsWithChildren<Props>> = ({
 
   const onStarRatingSave = (stars: number, feedback?: string) => {
     starRatingSave(stars, feedback);
-    // logEvent('rating_event', {experiment});
+    logEvent('rating_event', {experiment});
   };
 
   const onTestRatingClose = () => {
@@ -53,7 +53,7 @@ const StarRatingContext: React.FC<PropsWithChildren<Props>> = ({
 
   const onTestRatingSave = () => {
     testRatingSave();
-    // logEvent('rating_event', {experiment});
+    logEvent('rating_event', {experiment});
   };
 
   const onTestRatingFeedback = () => {

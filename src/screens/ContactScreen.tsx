@@ -6,13 +6,13 @@ import {RootStackParamList} from '../../App';
 import {useStarRating} from '../contexts/StarRatingProvider';
 import {triggerAction} from '../api/starRatingApi';
 import {triggerAction as testTriggerAction} from '../api/testRatingApi';
-// import {getRemoteValue} from '../services/firebase';
+import {getRemoteValue} from '../services/firebase';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Contact'>;
 
 const ContactScreen: React.FC<PropsWithChildren<Props>> = () => {
   const {setIsVisible} = useStarRating();
-  const experiment = 'current'; //getRemoteValue('rating');
+  const experiment = getRemoteValue('rating');
 
   const accept = () => {
     const action = experiment === 'current' ? triggerAction : testTriggerAction;

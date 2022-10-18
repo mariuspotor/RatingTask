@@ -3,6 +3,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
+# use_frameworks!
+# $RNFirebaseAsStaticFramework = true
 
 target 'RatingTask' do
   config = use_native_modules!
@@ -25,6 +27,18 @@ target 'RatingTask' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  pod 'Firebase', :modular_headers => true
+  pod 'FirebaseABTesting', :modular_headers => true
+  pod 'FirebaseAnalytics', :modular_headers => true
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'FirebaseCoreDiagnostics', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'FirebaseInstallations', :modular_headers => true
+  pod 'FirebaseMessaging', :modular_headers => true
+  pod 'FirebaseRemoteConfig', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
 
   target 'RatingTaskTests' do
     inherit! :complete

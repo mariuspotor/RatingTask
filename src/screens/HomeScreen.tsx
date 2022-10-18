@@ -16,13 +16,13 @@ import {
   subtractOneMonth,
   subtractOneWeek,
 } from '../api/testRatingApi';
-// import {checkToken, getRemoteValue, refreshConfig} from '../services/firebase';
+import {checkToken, getRemoteValue, refreshConfig} from '../services/firebase';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen: React.FC<PropsWithChildren<Props>> = ({navigation}) => {
   const {setIsVisible} = useStarRating();
-  const experiment = 'current'; //getRemoteValue('rating');
+  const experiment = getRemoteValue('rating');
   // checkToken();
 
   const invite = () => {
@@ -55,7 +55,7 @@ const HomeScreen: React.FC<PropsWithChildren<Props>> = ({navigation}) => {
         }}
       />
       <Button title="Reset storage" onPress={resetStorage} />
-      {/* <Button
+      <Button
         title="Refresh config"
         onPress={() => {
           refreshConfig().then(() => {
@@ -63,7 +63,7 @@ const HomeScreen: React.FC<PropsWithChildren<Props>> = ({navigation}) => {
             console.log({experiment});
           });
         }}
-      /> */}
+      />
     </View>
   );
 };

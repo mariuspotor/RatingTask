@@ -9,14 +9,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import ContactScreen from './src/screens/ContactScreen';
 import StarRatingProvider from './src/contexts/StarRatingProvider';
-// import {fetchConfig} from './src/services/firebase';
+import {fetchConfig} from './src/services/firebase';
 
 export type RootStackParamList = {
   Home: undefined;
   Contact: undefined;
 };
 
-// fetchConfig().catch(console.log);
+fetchConfig().catch(console.log);
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
